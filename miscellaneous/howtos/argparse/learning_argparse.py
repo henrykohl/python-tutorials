@@ -46,8 +46,8 @@ parser.add_argument('name', type=str, help='display a string')
 
 ## add Optional parameters
 ## dest: after parsing, the variable name
-parser.add_argument('--place', type=str, help='display an integer', dest = 'position')
-parser.add_argument('--food', type=str, help='display an integer')
+parser.add_argument('--place', type=str, help='display an integer', dest = 'position') 
+parser.add_argument('--food', type=str, default='cake', help='display an integer') # 加入default
 
 args = parser.parse_args()
 ## print variable
@@ -65,8 +65,9 @@ if __name__ == "__main__":
     ## Optional parameters
     if  args.position:
         print('Place: '+ args.position)
-    if args.food:
+    if args.food:  # `--food` 選項加入default value;因此下一行一定會執行
         print('food: '+ args.food)
     
     ## static parameters
-    count(args.runtimes, args.name)
+    count(args.runtimes, args.name) 
+    # static parameters意味著，執行指令runtimes與name的參數必需要給，例如`python learning_argparse.py 10 Sha`
